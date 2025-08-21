@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Future of Web Development is Here - TechInsight</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            transition: background 0.3s ease;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #333;
+        }
+
+        .cta-button {
+            background: #333;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #555;
+            transform: translateY(-2px);
+        }
+
+        /* Article Header */
+        .article-header {
+            background: linear-gradient(135deg, #667eea 0%, #0056b3 100%);
+            padding: 8rem 2rem 4rem 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .article-header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .article-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .post-tag {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Article Content */
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .article-content h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #333;
+            margin: 3rem 0 1.5rem 0;
+            line-height: 1.3;
+        }
+
+        .article-content h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #333;
+            margin: 2.5rem 0 1rem 0;
+        }
+
+        .article-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .article-content ul, .article-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .article-content li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            overflow-x: auto;
+            font-family: 'Monaco', 'Menlo', monospace;
+        }
+
+        .code-block .keyword { color: #569cd6; }
+        .code-block .string { color: #ce9178; }
+        .code-block .comment { color: #6a9955; }
+        .code-block .function { color: #dcdcaa; }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(0, 86, 179, 0.1));
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h4 {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Social Share */
+        .social-share {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 3rem 0;
+            padding: 2rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .share-button {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #333;
+            border-radius: 25px;
+            background: transparent;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .share-button:hover {
+            background: #333;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .share-button.primary {
+            background: linear-gradient(45deg, #667eea, #0056b3);
+            color: white;
+            border: none;
+        }
+
+        .share-button.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Author Bio */
+        .author-bio {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .author-bio-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #0056b3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .author-bio-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .author-bio-content p {
+            color: #666;
+            margin: 0;
+        }
+
+        /* Related Posts */
+        .related-posts {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+        }
+
+        .related-posts-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .related-posts h3 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .related-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .related-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .related-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .related-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .related-card .post-tag {
+            background: linear-gradient(45deg, #667eea, #0056b3);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 0 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .article-title {
+                font-size: 2.5rem;
+            }
+
+            .article-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .article-content {
+                padding: 2rem 1rem;
+            }
+
+            .article-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .author-bio {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .social-share {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .share-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">VoltrixCore</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#articles">Articles</a></li>
+                <li><a href="#tutorials">Tutorials</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#" class="cta-button">Subscribe</a>
+        </nav>
+    </header>
+
+    <!-- Article Header -->
+    <section class="article-header">
+        <div class="article-header-content">
+            <h1 class="article-title">Tips for breaking into the tech industry or advancing in your career.</h1>
+            <p class="article-subtitle">Discover the latest frameworks, tools, and methodologies that are revolutionizing how we build web applications</p>
+            
+              <div class="article-meta">
+                <div class="meta-item">
+                    <div class="author-avatar">KL</div>
+                    <span>By Kesaobaka Lekaote</span>
+                </div>
+                <div class="meta-item">
+                    <span>📅 September 19, 2024</span>
+                </div>
+                <div class="meta-item">
+                    <span>⏱️ 5 min read</span>
+                </div>
+            </div>
+            
+            <div class="post-tag">Tech industry </div>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <article class="article-content">
+
+        <p>Drawing from personal experiences, the lessons learned from their journeys
+             are sure to serve as valuable insights for those who either want to build or 
+             advance their careers in technology. Next, come the key takeaways from industry
+              leaders on essential skills
+             that a modern computer engineer should possess.</p>
+
+
+
+        <h2>🌐Embrace Lifelong Learning
+Collegue embracing lifelong learning
+Experience</h2>
+        
+  <ul>
+            <li><strong>Experience:</strong> The most successful professionals in the world of technology learn something new constantly. For example, Elon Musk, Chief Executive of Tesla CEO,Space X CEO reads voraciously and is self-taught: he digs deep into topics that come up to understand the most complex ideas.
+
+</li>
+            <li><strong>Lesson: </strong>: The world of technology is moving fast, and knowing the latest technologies, tools, and methodologies is on the right track. Inculcate the habit of reading industry blogs, taking online courses, and playing around with new technologies to help one keep their skills relevant.</li>
+     </ul>       
+
+     
+        <div class="highlight-box">
+            <h4>💡 Key AI Development Tools</h4>
+            <p>Modern AI assistants can now generate entire component libraries, optimize performance automatically, and even predict potential security vulnerabilities before they become problems.</p>
+        </div>
+
+  <h2>⚡ Work on Passion Projects</h2>
+        
+    <ul>
+            <li><strong>Experience:</strong>
+ Linus Torvalds, the creator of Linux, started his operating system out 
+ of personal interest. The dedication to a personal 
+ project eventually changed the open-source landscape.
+
+</li>
+            <li><strong>Lesson: </strong>: Projects that interest you might yield the biggest 
+                successes. Passion projects have room to experiment and innovate; your portfolio
+                 could 
+                benefit from this as well as open new doors.</li>
+     </ul>       
+
+        <div class="code-block">
+<span class="comment">// AI-generated React component with automatic optimizations</span>
+<span class="keyword">import</span> { memo, useCallback, useMemo } <span class="keyword">from</span> <span class="string">'react'</span>;
+
+<span class="keyword">const</span> <span class="function">OptimizedComponent</span> = <span class="function">memo</span>(({ data, onUpdate }) => {
+  <span class="keyword">const</span> processedData = <span class="function">useMemo</span>(() => {
+    <span class="keyword">return</span> data.filter(item => item.active).sort((a, b) => a.priority - b.priority);
+  }, [data]);
+
+  <span class="keyword">const</span> handleClick = <span class="function">useCallback</span>((id) => {
+    onUpdate(prevData => prevData.map(item => 
+      item.id === id ? { ...item, selected: !item.selected } : item
+    ));
+  }, [onUpdate]);
+
+  <span class="keyword">return</span> (
+    &lt;div className=<span class="string">"optimized-list"</span>&gt;
+      {processedData.map(item => (
+        &lt;ListItem key={item.id} item={item} onClick={handleClick} /&gt;
+      ))}
+    &lt;/div&gt;
+  );
+});
+        </div>
+
+      
+       
+        <h3>Build and Leverage Your Network</h3>
+        
+        
+        <ul>
+        
+        </li>
+            <li><strong>Personal experience:</strong>The COO at Facebook , Sheryl Sandberg, 
+                says that networking has worked wonders for her in the way her career path went. Building relationships and nurturing them professionally can perhaps lead to a
+                 mentor, a partner, or even a job offer. </li>
+            <li><strong>How to get ahead: </strong> 
+                Take the time to network online and offline. Attending industry events, joining professional associations, and finding people who could mentor you and provide an entree to people you don't know will pay off.</li>
+            
+        </ul>
+
+        <h2>🚀 Problem-Solving as Priority 3</h2>
+ <ul>
+        
+        </li>
+            <li><strong>Experience: </strong>The CEO, Satya Nadella, has been talking about how much more empathy a leader must have and the problem-solving skills he must hold. He centres his strategy on the needs of the customers and tries to find a way out to help in solving their problems. </li>
+            <li><strong>Lesson:</strong> 
+                Thought processes must be solution-focused. In trying to 
+                solve a problem, consider solution-oriented approaches. The idea 
+                is to understand the root cause of the problem and focus on dealing 
+                with those issues for users/customers</li>
+            
+        </ul>
+       
+        
+        <h2>🌍 Adaptability is Key Experience</h2>
+      
+        <ul>
+        </li>
+            <li><strong>Experience: </strong>Marissa Mayer, ex-CEO of Yahoo, an
+                 early employee at Google - during her lifetime, she worked at different levels on different projects. Because of their adaptability to surroundings and multiple responsibilities at 
+                work, Mayer was able to make a difference. </li>
+            <li><strong>Lesson:</strong> 
+                Be flexible and open to change. Adaptation to new roles, technologies, and working environments is important for career growth. Any opportunities deserve a welcome, even though they may 
+                be out of your comfort zone since it is all about learning and growth.</li>
+            
+        </ul>
+        
+        
+        <div class="code-block">
+<span class="comment">// Edge function for real-time personalization</span>
+<span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">async function</span> <span class="function">handler</span>(request) {
+  <span class="keyword">const</span> { searchParams } = <span class="keyword">new</span> URL(request.url);
+  <span class="keyword">const</span> userAgent = request.headers.get(<span class="string">'user-agent'</span>);
+  <span class="keyword">const</span> country = request.cf?.country || <span class="string">'US'</span>;
+  
+  <span class="comment">// Personalize content based on location and device</span>
+  <span class="keyword">const</span> content = <span class="keyword">await</span> <span class="function">personalizeContent</span>({
+    country,
+    isMobile: <span class="function">detectMobile</span>(userAgent),
+    preferences: <span class="keyword">await</span> <span class="function">getUserPreferences</span>(request)
+  });
+  
+  <span class="keyword">return</span> <span class="keyword">new</span> <span class="function">Response</span>(<span class="function">JSON.stringify</span>(content), {
+    headers: { <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span> }
+  });
+}
+        </div>
+
+        <h2>🔮 Seek Feedback and Learn from Failures</h2>
+        <ul>
+        
+            <li><strong>Experience: </strong>Jeff Bezos, the founder of Amazon, a big part of his life was composed of failures and feedback. People, he said, needn't be afraid of failures; one learns through them. </li>
+            <li><strong>Lesson:</strong> 
+               One should never be afraid to fail but should take it as an opportunity for learning. Take constructive feedback from peers and mentors that will help in improvement and growth. This would be a good opportunity to analyse where things went wrong, hence helping one in applying these insights when it comes to future failures.</li>
+            
+        </ul> 
+    
+
+        <h2>🎨  Focus on Impact, Not Just Tasks</h2>
+          <ul>
+        
+            <li><strong>Experience: </strong>Jony Ive used to work at Apple as Chief Design Officer and has forever focused on producing products that would make a difference in people's lives. His design philosophy will always be about "making a dent.". </li>
+            <li><strong>Lesson:</strong> 
+              Always try to create an impact with your work. Whether you code, design or manage projects, focus on contributing toward solutions that either improve user experience or solve some real-world problem.</li>
+            
+        </ul> 
+       
+
+        <h2>📈 Work Ethic</h2>
+        
+        
+      <ul>
+        
+            <li><strong>Experience: </strong> Andrew Ng, the co-founder of Google Brain and Coursera, spoke of how he was able to create and scale his influential projects through dedication and hard work. </li>
+            <li><strong>Lesson:</strong> 
+              A good work ethic is the foundation of success. Be diligent, ensure work gets done on time and often go that extra mile to achieve the required results. Your dedication will be the separating factor in most instances that will bring along more career opportunities.</li>
+            
+        </ul> 
+       
+
+        <h2>🚦 Be Patient and Persistent</h2>
+        
+        <ul>
+        
+            <li><strong>Experience: </strong> Marie Curie was a radioactivity pioneer, the first woman to win two Nobel prizes for work. She showed patience and persistence in her work, which paid off with historic results.</li>
+            <li><strong>Lesson:</strong> 
+              Great things in tech take time. Have persistence with your goals no matter how long it seems to take. Patience and persistence will see you through most of your challenges toward long-term success.</li>
+            
+        </ul> 
+        <h2>🛠️ Balance Work and Life</h2>
+
+         <ul>
+        
+            <li><strong>Experience: </strong> Very disciplined, the CEO of Apple Inc., Tim Cook, does make sure he establishes a proper balance between work and life. He believes personal well-being is part of professional success.</li>
+            <li><strong>Lesson:</strong> 
+             Your personal life and well-being are never worth sacrificing on the altar of career success. Make sure you can create a good balance between work and personal life so that you can be productive and creative, adding to your happiness.</li>
+            
+        </ul> 
+
+        <!-- Social Share -->
+        <div class="social-share">
+            <a href="#" class="share-button primary">👍 Like this article</a>
+            <a href="#" class="share-button">📤 Share</a>
+            <a href="#" class="share-button">💬 Discuss</a>
+            <a href="#" class="share-button">🔖 Bookmark</a>
+        </div>
+
+        <!-- Author Bio -->
+        <div class="author-bio">
+            <div class="author-bio-avatar">SC</div>
+            <div class="author-bio-content">
+                <h4>Sarah Chen</h4>
+                <p>Sarah is a senior full-stack developer and technical writer with over 8 years of experience in modern web technologies. She specializes in React, Node.js, and cloud architecture, and is passionate about making complex technologies accessible to developers of all skill levels.</p>
+            </div>
+        </div>
+    </article>
+
+    <!-- Related Posts -->
+    <section class="related-posts">
+        <div class="related-posts-content">
+            <h3>Related Articles</h3>
+            <div class="related-grid">
+                <div class="related-card">
+                    <div class="post-tag">Machine Learning</div>
+                    <h4>Machine Learning Made Simple</h4>
+                    <p>Break down complex ML concepts into digestible insights and learn how AI is transforming industries.</p>
+                </div>
+                <div class="related-card">
+                    <div class="post-tag">Cloud Computing</div>
+                    <h4>Serverless Architecture Patterns</h4>
+                    <p>Explore modern serverless patterns and learn how to build scalable, cost-effective applications.</p>
+                </div>
+                <div class="related-card">
+                    <div class="post-tag">Performance</div>
+                    <h4>Core Web Vitals Optimization</h4>
+                    <p>Master the art of web performance optimization and deliver lightning-fast user experiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>TechInsight</h3>
+                <p>Exploring the frontiers of technology and development. Stay informed, stay ahead.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="#">Web Development</a></li>
+                    <li><a href="#">Machine Learning</a></li>
+                    <li><a href="#">Cloud Computing</a></li>
+                    <li><a href="#">Mobile Development</a></li>
+                    <li><a href="#">DevOps</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Tutorials</a></li>
+                    <li><a href="#">Code Samples</a></li>
+                    <li><a href="#">Tools & Libraries</a></li>
+                    <li><a href="#">Cheat Sheets</a></li>
+                    <li><a href="#">Best Practices</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="#">Discord</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Share button interactions
+        document.querySelectorAll('.share-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Add visual feedback
+                const originalText = button.textContent;
+                button.style.transform = 'scale(0.95)';
+                button.textContent = 'Shared! ✓';
+                
+                setTimeout(() => {
+                    button.style.transform = 'scale(1)';
+                    button.textContent = originalText;
+                }, 1000);
+            });
+        });
+
+        // Related cards hover effect
+        document.querySelectorAll('.related-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html> 
