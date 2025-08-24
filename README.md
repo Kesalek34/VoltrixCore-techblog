@@ -1,7 +1,8 @@
+# VoltrixCore TechBlog
+
 <p align="center">
   <img src="assets/banner.png" alt="VoltrixCore TechBlog Banner" width="800"/>
 </p>
-# VoltrixCore TechBlog
 
 Welcome to **VoltrixCore TechBlog** – a modern tech blog where we share insights, tutorials, and resources on web development, software engineering, and emerging technologies.  
 
