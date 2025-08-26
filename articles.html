@@ -3,128 +3,485 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articles- VoltrixCore</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Articles - VoltrixCore</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #333;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #0056b3 100%);
+            padding: 120px 2rem 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Articles Grid */
+        .articles-section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .article-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #0056b3 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+        }
+
+        .article-icon {
+            font-size: 3rem;
+            color: rgba(255,255,255,0.8);
+            z-index: 1;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+
+        .post-tag {
+            background: linear-gradient(45deg, #667eea, #0056b3);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .article-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+
+        .article-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #888;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .read-time {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: white;
+            color: #666;
+            border: 2px solid #e0e0e0;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(45deg, #667eea, #0056b3);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .filter-buttons {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .nav {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Category specific colors */
+        .ai-future { background: linear-gradient(45deg, #ff6b6b, #ee5a24); }
+        .career { background: linear-gradient(45deg, #4834d4, #686de0); }
+        .business { background: linear-gradient(45deg, #00d2d3, #54a0ff); }
+        .programming { background: linear-gradient(45deg, #5f27cd, #341f97); }
+        .security { background: linear-gradient(45deg, #ff9ff3, #f368e0); }
+        .student { background: linear-gradient(45deg, #feca57, #ff9f43); }
+        .fintech { background: linear-gradient(45deg, #48dbfb, #0abde3); }
+    </style>
 </head>
 <body>
-    
-  <!-- Header -->
+    <!-- Header -->
     <header class="header">
         <nav class="nav">
             <div class="logo">VoltrixCore</div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="articles.html">Articles</a></li>
-                
                 <li><a href="about.html">About</a></li>
-                <li><a href="contactus.html ">Contact</a></li>
-               <li><a href="terms.html">Terms & Conditions</a></li>
+                <li><a href="contactus.html">Contact</a></li>
+                <li><a href="terms.html">Terms & Conditions</a></li>
             </ul>
-            
         </nav>
     </header>
 
-    <!-- Article Header -->
-    <section class="article-header">
-        <div class="article-header-content">
-            <h1 class="article-title">Articles</h1>
-           
-            
-            <div class="article-meta">
-                <div class="meta-item">
-                    <div class="author-avatar">KL</div>
-                    <span>By Kesaobaka Lekaote</span>
-                </div>
-                <div class="meta-item">
-                    <span>📅 September 19, 2024</span>
-                </div>
-                <div class="meta-item">
-                    <span>⏱️ 8 min read</span>
-                </div>
-            </div>
-            
-            <div class="post-tag">Analytical Thinking</div>
-        </div>
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Tech Articles & Insights</h1>
+        <p>Exploring the frontiers of technology, development, and career growth. Stay informed, stay ahead with our latest insights and expert analysis.</p>
     </section>
 
-  
+    <!-- Articles Section -->
+    <section class="articles-section">
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Articles</button>
+                <button class="filter-btn" data-filter="ai">AI & Future</button>
+                <button class="filter-btn" data-filter="career">Career</button>
+                <button class="filter-btn" data-filter="business">Business</button>
+                <button class="filter-btn" data-filter="programming">Programming</button>
+                <button class="filter-btn" data-filter="security">Security</button>
+            </div>
+        </div>
 
-    <!-- Related Posts -->
-    <section class="related-posts">
-        <div class="related-posts-content">
-            <h3>Related Articles</h3>
-            <div class="related-grid">
-                <div class="related-card">
+        <!-- Articles Grid -->
+        <div class="articles-grid">
+            <article class="article-card" data-category="ai">
+                <div class="article-image ai-future">
+                    <div class="article-icon">🤖</div>
+                </div>
+                <div class="article-content">
                     <div class="post-tag">AI & Future</div>
-                    <h4>Emerging Trends in AI: A Peek Into The Future</h4>
-                    <p>Explore the cutting-edge developments in artificial intelligence and their potential impact on various industries.</p>
+                    <h3 class="article-title">Emerging Trends in AI: A Peek Into The Future</h3>
+                    <p class="article-description">Explore the cutting-edge developments in artificial intelligence and their potential impact on various industries.</p>
+                    <div class="article-meta">
+                        <span>By Kesaobaka Lekaote</span>
+                        <span class="read-time">⏱️ 8 min read</span>
+                    </div>
                 </div>
-                <div class="related-card">
+            </article>
+
+            <article class="article-card" data-category="career">
+                <div class="article-image career">
+                    <div class="article-icon">🚀</div>
+                </div>
+                <div class="article-content">
                     <div class="post-tag">Career Development</div>
-                    <h4>Tips for breaking into the tech industry or advancing in your career</h4>
-                    <p>Essential strategies and actionable advice for launching or accelerating your technology career.</p>
+                    <h3 class="article-title">Tips for Breaking Into the Tech Industry</h3>
+                    <p class="article-description">Essential strategies and actionable advice for launching or accelerating your technology career.</p>
+                    <div class="article-meta">
+                        <span>By Kesaobaka Lekaote</span>
+                        <span class="read-time">⏱️ 6 min read</span>
+                    </div>
                 </div>
-                <div class="related-card">
+            </article>
+
+            <article class="article-card" data-category="business">
+                <div class="article-image business">
+                    <div class="article-icon">💰</div>
+                </div>
+                <div class="article-content">
                     <div class="post-tag">Business & Finance</div>
-                    <h4>Investing in Tech Startups and Ventures</h4>
-                    <p>Learn how to evaluate and invest in promising technology companies and startup ventures.</p>
+                    <h3 class="article-title">Investing in Tech Startups and Ventures</h3>
+                    <p class="article-description">Learn how to evaluate and invest in promising technology companies and startup ventures.</p>
+                    <div class="article-meta">
+                        <span>By Kesaobaka Lekaote</span>
+                        <span class="read-time">⏱️ 10 min read</span>
+                    </div>
                 </div>
-                <div class="related-card">
+            </article>
+
+            <article class="article-card" data-category="programming">
+                <div class="article-image programming">
+                    <div class="article-icon">💻</div>
+                </div>
+                <div class="article-content">
                     <div class="post-tag">Side Hustles</div>
-                    <h4>Top Side Hustles for Programmers to Turn Your Coding Skills into Extra Income</h4>
-                    <p>Discover lucrative opportunities to monetize your programming skills outside your main job.</p>
+                    <h3 class="article-title">Top Side Hustles for Programmers</h3>
+                    <p class="article-description">Discover lucrative opportunities to monetize your programming skills outside your main job.</p>
+                    <div class="article-meta">
+                        <span>By Kesaobaka Lekaote</span>
+                        <span class="read-time">⏱️ 7 min read</span>
+                    </div>
                 </div>
-                <div class="related-card">
+            </article>
+
+            <article class="article-card" data-category="business">
+                <div class="article-image fintech">
+                    <div class="article-icon">📱</div>
+                </div>
+                <div class="article-content">
                     <div class="post-tag">Digital Finance</div>
-                    <h4>The Revolution of Digital Payments-From the Mobile Wallet to the Cryptocurrency</h4>
-                    <p>Trace the evolution of digital payment systems and their transformation of financial transactions.</p>
+                    <h3 class="article-title">The Revolution of Digital Payments</h3>
+                    <p class="article-description">Trace the evolution of digital payment systems and their transformation of financial transactions.</p>
+                    <div class="article-meta">
+                        <span>By Kesaobaka Lekaote</span>
+                        <span class="read-time">⏱️ 9 min read</span>
+                    </div>
                 </div>
-                <div class="related-card">
+            </article>
+
+            <article class="article-card" data-category="business">
+                <div class="article-image business">
+                    <div class="article-icon">☁️</div>
+                </div>
+                <div class="article-content">
                     <div class="post-tag">SaaS Business</div>
-                    <h4>How SaaS Companies Are Making Money</h4>
-                    <p>Understand the business models and revenue strategies that drive successful SaaS companies.</p>
+                    <h3 class="article-title">How SaaS Companies Are Making Money</h3>
+                    <p class="article-description">Understand the business models and revenue strategies that drive successful SaaS companies.</p>
+                    <div class="article-meta">
+                        <span>By Kesaobaka Lekaote</span>
+                        <span class="read-time">⏱️ 8 min read</span>
+                    </div>
                 </div>
-                <div class="related-card">
+            </article>
+
+            <article class="article-card" data-category="career">
+                <div class="article-image career">
+                    <div class="article-icon">📚</div>
+                </div>
+                <div class="article-content">
                     <div class="post-tag">Professional Growth</div>
-                    <h4>Continuous Learning and Tech Careers</h4>
-                    <p>Why lifelong learning is essential in technology and how to maintain your competitive edge.</p>
+                    <h3 class="article-title">Continuous Learning and Tech Careers</h3>
+                    <p class="article-description">Why lifelong learning is essential in technology and how to maintain your competitive edge.</p>
+                    <div class="article-meta">
+                        <span>By Kesaobaka Lekaote</span>
+                        <span class="read-time">⏱️ 6 min read</span>
+                    </div>
                 </div>
-                <div class="related-card">
+            </article>
+
+            <article class="article-card" data-category="security">
+                <div class="article-image security">
+                    <div class="article-icon">🛡️</div>
+                </div>
+                <div class="article-content">
                     <div class="post-tag">Cybersecurity</div>
-                    <h4>Rethinking Cybersecurity: the Role of AI in Threat Detection and Response</h4>
-                    <p>How artificial intelligence is revolutionizing cybersecurity defense mechanisms and threat response.</p>
+                    <h3 class="article-title">Rethinking Cybersecurity: AI in Threat Detection</h3>
+                    <p class="article-description">How artificial intelligence is revolutionizing cybersecurity defense mechanisms and threat response.</p>
+                    <div class="article-meta">
+                        <span>By Kesaobaka Lekaote</span>
+                        <span class="read-time">⏱️ 9 min read</span>
+                    </div>
                 </div>
-                <div class="related-card">
+            </article>
+
+            <article class="article-card" data-category="career">
+                <div class="article-image student">
+                    <div class="article-icon">🎓</div>
+                </div>
+                <div class="article-content">
                     <div class="post-tag">Student Life</div>
-                    <h4>10 Brutal Truths About Being a Computer Science Student</h4>
-                    <p>The harsh realities and challenges every computer science student should know before diving in.</p>
+                    <h3 class="article-title">10 Brutal Truths About Being a CS Student</h3>
+                    <p class="article-description">The harsh realities and challenges every computer science student should know before diving in.</p>
+                    <div class="article-meta">
+                        <span>By Kesaobaka Lekaote</span>
+                        <span class="read-time">⏱️ 8 min read</span>
+                    </div>
                 </div>
-                <div class="related-card">
-                    <div class="post-tag">Beginner's Guide</div>
-                    <h4>The Magic of Coding Unlocked: A Beginner's Guide</h4>
-                    <p>Start your programming journey with this comprehensive introduction to the world of coding.</p>
+            </article>
+
+
+            <article class="article-card" data-category="ai">
+                <div class="article-image ai-future">
+                    <div class="article-icon">🧠</div>
                 </div>
-                <div class="related-card">
+                <div class="article-content">
                     <div class="post-tag">Artificial Intelligence</div>
-                    <h4>The Power of Artificial Intelligence</h4>
-                    <p>Explore the transformative capabilities and potential applications of artificial intelligence technology.</p>
+                    <h3 class="article-title">The Power of Artificial Intelligence</h3>
+                    <p class="article-description">Explore the transformative capabilities and potential applications of artificial intelligence technology.</p>
+                    <div class="article-meta">
+                        <span>By Kesaobaka Lekaote</span>
+                        <span class="read-time">⏱️ 10 min read</span>
+                    </div>
                 </div>
-            </div>
+            </article>
         </div>
     </section>
-      <!-- Article Content -->
-    <article class="article-content">
-       
-        <div class="social-share">
-            <a href="#" class="share-button primary">👍 Like this article</a>
-            <a href="#" class="share-button">📤 Share</a>
-            <a href="#" class="share-button">💬 Discuss</a>
-            <a href="#" class="share-button">🔖 Bookmark</a>
-        </div>
-
-    
-
-    </article>
 
     <!-- Footer -->
     <footer class="footer">
@@ -133,6 +490,11 @@
                 <h3>VoltrixCore</h3>
                 <p>Exploring the frontiers of technology and development. Stay informed, stay ahead.</p>
             </div>
+            </br>
+                <ul>
+              <li><a href="../terms.html">Terms & Conditions</a></li>
+               <li><a href="../privacypolicy.html">Privacy Policy </a></li>
+            </ul>
             <div class="footer-section">
                 <h3>Categories</h3>
                 <ul>
@@ -166,6 +528,65 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const articleCards = document.querySelectorAll('.article-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                articleCards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        const cardCategory = card.getAttribute('data-category');
+                        if (cardCategory === filterValue) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // Add click handlers for article cards
+        articleCards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.style.cursor = 'pointer';
+                const title = card.querySelector('.article-title').textContent;
+                
+                // Create article URLs based on titles
+                const articleUrls = {
+                    'Emerging Trends in AI: A Peek Into The Future': 'posts/posts2.html',
+                    'Tips for Breaking Into the Tech Industry': 'posts/posts3.html',
+                    'Investing in Tech Startups and Ventures': 'posts/post4.html',
+                    'Top Side Hustles for Programmers': 'posts/post5.html',
+                    'The Revolution of Digital Payments': 'posts/post6.html',
+                    'How SaaS Companies Are Making Money': 'posts/post7.html',
+                    'Continuous Learning and Tech Careers': 'posts/post8.html',
+                    'Rethinking Cybersecurity: AI in Threat Detection': 'posts/post9.html',
+                    '10 Brutal Truths About Being a CS Student': 'posts/post11.html',
+                    'How Coding Enhances Analytical Thinking Skills': 'posts/posts1.html',
+                    
+                };
+                
+                const url = articleUrls[title];
+                if (url) {
+                    window.open(url, '_blank');
+                } else {
+                    // Fallback - open a demo article page
+                    window.open('article-demo.html', '_blank');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
