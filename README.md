@@ -44,7 +44,4 @@ This project is licensed under the MIT License.
 
 ✨ Created with passion by **Kesaobaka Lekaote**  
 
----
-
-✨ Created with passion by **VoltrixCore** 
 
