@@ -216,5 +216,28 @@
     </footer>
 
     <script src="script.js"></script>
+      <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAx1nMGMfcfy3hgv3tsVqMOVyPGozBEd_M",
+    authDomain: "voltrixcore.firebaseapp.com",
+    projectId: "voltrixcore",
+    storageBucket: "voltrixcore.firebasestorage.app",
+    messagingSenderId: "991115906666",
+    appId: "1:991115906666:web:8d911f230a516ca4a58413",
+    measurementId: "G-GQ8VZZ2F01"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 </body>
 </html>
