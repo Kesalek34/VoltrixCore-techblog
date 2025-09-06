@@ -9,8 +9,7 @@ Welcome to **VoltrixCore TechBlog** – a modern tech blog where we share insigh
 ## 🚀 About the Project
 VoltrixCore TechBlog is built to:
 - Share technical knowledge in a clear and practical way
-- Cover topics such as **JavaScript, React, Python, Cloud, and DevOps**
-- Provide project-based learning resources
+- Cover topics such as AI,Top Side hustles in the tech industry and many more
 - Inspire developers with articles on modern trends in technology
 
 ## 📂 Project Structure
