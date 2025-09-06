@@ -28,7 +28,7 @@ VoltrixCore TechBlog is built to:
 - Future plans: Firebase / React integration  
 
 ## 🌍 Live Demo
-_Coming soon..._
+voltrixcore.web.app 
 
 ## 🤝 Contributing
 Contributions are welcome!  
